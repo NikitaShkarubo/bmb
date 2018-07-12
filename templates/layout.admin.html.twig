@@ -1,0 +1,24 @@
+{% extends 'SonataAdminBundle::standard_layout.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('assets/css/admin.css') }}">
+{% endblock %}
+
+{% block logo %}
+    {% spaceless %}
+        <a class="logo" href="{{ path('sonata_admin_dashboard') }}">
+        </a>
+    {% endspaceless %}
+{% endblock %}
+    {% block sonata_top_nav_menu %}
+        {% spaceless %}
+            {% if is_granted("ROLE_ADMIN") %}
+            <a class="exit-btn" href="{{ path('logout') }}">
+                <i class="fa fa-chain-broken" aria-hidden="true"> Logout</i>
+            </a>
+            {% endif %}
+        {% endspaceless %}
+    {% endblock %}
+{% block side_bar_after_nav %}
+{% endblock %}

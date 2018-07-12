@@ -1,0 +1,36 @@
+<aside class="right-side">
+    <div class="widget small contact-widget">
+        <div class="widget-title">Contact Us</div>
+        <div class="widget-body">
+            {{ form_start(form, {'action': path('ajax-contact')}) }}
+            <div class="result"></div>
+            <div class="row">
+                <div class="large-12 columns">{{ form_row(form.name) }}</div>
+            </div>
+            <div class="row">
+                <div class="large-12 columns">{{ form_row(form.email) }}</div>
+            </div>
+            <div class="row">
+                <div class="large-12 columns">{{ form_row(form.phone) }}</div>
+            </div>
+            <div class="row">
+                <div class="large-12 columns">{{ form_row(form.comment) }}</div>
+            </div>
+            <div class="row">
+                <div class="large-12 columns">
+                    <div class="captcha">{{ form_row(form.recaptcha) }}</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="large-12 columns">
+                    <div>
+                        <button type="submit" id="contact_submit" name="contact[submit]" class="button wide">Send
+                        </button>
+                    </div>
+                </div>
+            </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+</aside>
+<script src="//www.google.com/recaptcha/api.js?hl={{ app.request.locale }}"></script>

@@ -1,0 +1,42 @@
+vich_uploader:
+    db_driver: orm
+    templating: true        # set to false to disable templating integration
+    twig:       true        # set to false to disable twig integration (requires templating)
+    form:       true        # set to false to disable form integration
+    storage:    file_system
+    mappings:
+        settings_image:
+            uri_prefix:         /images/upload/settings
+            upload_destination: '%kernel.root_dir%/../public/images/upload/settings'
+            namer:              vich_uploader.namer_uniqid
+            inject_on_load:     false
+            delete_on_update:   true
+            delete_on_remove:   true
+        intro_image:
+            uri_prefix:         /images/upload/intro
+            upload_destination: '%kernel.root_dir%/../public/images/upload/intro'
+            namer:              vich_uploader.namer_uniqid
+            inject_on_load:     false
+            delete_on_update:   true
+            delete_on_remove:   true
+        experience_image:
+            uri_prefix:         /images/upload/experience
+            upload_destination: '%kernel.root_dir%/../public/images/upload/experience'
+            namer:              vich_uploader.namer_uniqid
+            inject_on_load:     false
+            delete_on_update:   true
+            delete_on_remove:   true
+        page_image:
+            uri_prefix:         /images/upload/page
+            upload_destination: '%kernel.root_dir%/../public/images/upload/page'
+            namer:              vich_uploader.namer_uniqid
+            inject_on_load:     false
+            delete_on_update:   true
+            delete_on_remove:   true
+        team_image:
+            uri_prefix:         /images/upload/team
+            upload_destination: '%kernel.root_dir%/../public/images/upload/team'
+            namer:              vich_uploader.namer_uniqid
+            inject_on_load:     false
+            delete_on_update:   true
+            delete_on_remove:   true

@@ -1,0 +1,12 @@
+{% extends 'SonataAdminBundle:CRUD:base_edit.html.twig' %}
+{% block javascripts %}
+    {{ parent() }}
+    {% if object.id == 3 %}
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("button[name*=btn_update_and_list]").hide();
+            $('.sonata-action-element').hide();
+        });
+    </script>
+    {% endif %}
+{% endblock %}

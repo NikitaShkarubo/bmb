@@ -1,0 +1,5 @@
+{% extends 'SonataAdminBundle:CRUD:base_list_field.html.twig' %}
+
+{% block field %}
+    <a class="sonata-link-identifier" href="/admin/app/contact/{{ object.id }}/edit"> {{ object.phone | phone_number_format('INTERNATIONAL')}} </a>
+{% endblock %}

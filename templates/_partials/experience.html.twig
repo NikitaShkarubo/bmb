@@ -1,0 +1,27 @@
+{% set experience = getExperienceComponent() %}
+{% if experience is not empty %}
+    <section class="experience">
+        <div class="centered">
+            <div class="section-title">Our Experience</div>
+            <ul class="experience-list clearfix">
+                {% for item in experience %}
+                    <li><a {% if item.link != null %} href="{{ item.link }}" {% endif %}>
+                            <img src="{{ path('image', {'type': "experience", 'size': '317x188', 'rf': 'fix', 'item': item.image}) }}"
+                                 alt="{{ item.title }}" title="{{ item.title }}">
+                            <div class="item-info">
+                                <div class="item-title">{{ item.title }}</div>
+                                <div class="item-text">
+                                    {{ item.description | nl2br }}
+                                </div>
+                                {% if item.link != null %}
+                                    <div class="btn-holder">
+                                        <div class="more-btn">learn more</div>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+{% endif %}

@@ -1,0 +1,19 @@
+{% set testimonials = getTestimonialsComponent() %}
+{% if testimonials is not empty %}
+    <section class="testimonials">
+        <div class="centered">
+            <div class="section-title">Client Testimonials</div>
+            <div class="testimonials-slider">
+                {% for item in testimonials %}
+                    <div class="slider-item">
+                        <div class="text">
+                            {{ item.comment | raw }}
+                        </div>
+                        <div class="caption">{% if item.link is not null %} <a {% if item.linkTarget is not null %} target="{{ item.linkTarget }}" {% endif %}
+                                href="{{ item.link }}">{{ item.name }}</a>{% else %} {{ item.name }} {% endif %}</div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endif %}

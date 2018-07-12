@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+{% spaceless %}
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}{{ pageHtmlTitle|default('BazarMcBean') }}{% endblock %}</title>
+        <meta name="description" content="{% block seoDescription %}{% endblock %}">
+        <meta name="keywords" content="{% block seoKeywords %}{% endblock %}">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+        {% block stylesheets %}{% endblock %}
+        {% block head %}{% endblock %}
+    </head>
+    <body>
+        {% block body %}{% endblock %}
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>
+{% endspaceless %}

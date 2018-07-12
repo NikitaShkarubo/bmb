@@ -1,0 +1,171 @@
+.footer{
+    color: #aaaaaa;
+    font-size: 16px;
+    overflow: hidden;
+
+    p{
+        @include normal-font(16px, 21px);
+        margin-bottom: 45px;
+    }
+
+    ul{
+        @extend .list-reset;
+        margin-bottom: 23px;
+
+        li{
+            + li{
+                margin-top: 5px;
+            }
+        }
+
+        &.margin{
+            margin-bottom: 60px;
+        }
+    }
+
+    table{
+        table-layout: fixed;
+
+        tr{
+            td{
+                padding-bottom: 20px;
+                padding-right: 10px;
+
+                a{
+                    color: #fff;
+                }
+
+                &:first-child{
+                    width: 115px;
+                }
+            }
+        }
+
+        + table{
+            margin-top: 43px;
+        }
+    }
+
+    #map{
+        height: 460px;
+    }
+
+    .footer-top{
+        padding: 50px 0;
+        background: #3F3F3F;
+        color: #aaaaaa;
+        line-height: 24px;
+    }
+
+    .footer-bottom{
+        padding: 40px 0;
+        color: #fff;
+        background: #383838;
+
+        a{
+            color: #fff;
+        }
+    }
+
+    @media (max-width: 1180px) {
+        .footer-top{
+            padding: 40px 0;
+            line-height: 21px;
+        }
+
+        font-size: 13px;
+
+        p{
+            font-size: 13px;
+        }
+    }
+
+    @media (max-width: 1024px) {
+        ul,
+        p{
+            margin-bottom: 10px;
+        }
+
+        ul{
+            &.margin{
+                margin-bottom: 10px;
+            }
+        }
+
+        table{
+            tr{
+                td{
+                    display: block;
+                    padding-bottom: 5px;
+                }
+            }
+
+            + table{
+                margin-top: 10px;
+            }
+        }
+
+        #map{
+            height: 350px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        table{
+            tr{
+                td{
+                    display: table-cell;
+                    padding-bottom: 10px;
+                }
+            }
+        }
+
+        .footer-top{
+            .centered{
+                > .row{
+                    > .columns{
+                        width: auto;
+                        float: none;
+
+                        + .columns{
+                            margin-top: 15px;
+                        }
+                    }
+                }
+            }
+        }
+
+        #map{
+            height: 250px;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .footer-top{
+            .centered{
+                > .row{
+                    > .columns{
+                       .row{
+                           .columns{
+                               float: none;
+                               width: auto;
+                           }
+                       }
+                    }
+                }
+            }
+        }
+
+        .footer-bottom{
+            .made-by,
+            .copyright{
+                float: none;
+                text-align: center;
+            }
+
+            .copyright{
+                margin-bottom: 10px;
+            }
+        }
+    }
+}

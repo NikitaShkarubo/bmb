@@ -1,0 +1,21 @@
+{% set settings = getSettings() %}
+    {% if settings.aboutImage == null %}
+        {% set image = 'default.jpg' %}
+    {% else %}
+        {% set image = settings.aboutImage %}
+    {% endif %}
+<section class="about">
+    <div class="centered">
+        <div class="title">
+            <div class="bm-logo"><img src="{{- preload(asset('assets/images/bm-logo.png')) -}}"
+                                      title="Bazar McBean LPP" alt="Bazar McBean LPP">
+            </div>
+            Bazar McBean LPP
+        </div>
+        <div class="text"><img class="about-img"
+                               src="{{ path('image', {'type': "settings", 'size': '575x415', 'rf': 'fix', 'item': image}) }}"
+                               alt="{{ settings.aboutImage }}" title="{{ settings.aboutTitle }}">
+            {{ settings.aboutText | raw }}
+        </div>
+    </div>
+</section>

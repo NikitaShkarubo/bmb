@@ -1,0 +1,17 @@
+.idea
+/bin/*
+!/bin/console
+/node_modules/
+/public/assets/*
+/public/bundles/
+/public/components/
+/public/images/upload/*/*
+!/public/images/upload/*/default.jpg
+/public/userfiles/*
+/public/upload/*
+/var/cache/*
+/var/log/*
+/var/sessions/*
+/vendor/
+.env
+!.gitkeep

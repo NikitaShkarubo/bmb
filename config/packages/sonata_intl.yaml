@@ -1,0 +1,4 @@
+sonata_intl:
+    timezone:
+        locales:
+            en: America/Toronto

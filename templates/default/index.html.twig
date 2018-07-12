@@ -1,0 +1,22 @@
+{% extends "@App/layout.html.twig" %}
+
+{% block content %}
+    {% include '@App/_partials/intro.html.twig' %}
+    {{ render(controller('App\\Controller\\ContactController::contactAction', { 'type': 'main' })) }}
+    {% include '@App/_partials/about.html.twig' %}
+    <section class="center">
+        <div class="content centered clearfix">
+            {{ page.content | raw }}
+        </div>
+    </section>
+    {% include '@App/_partials/experience.html.twig' %}
+
+    {% if page.testimonialsActive == true %}
+        {% include '@App/_partials/testimonials.html.twig' %}
+    {% endif %}
+
+    {% include '@App/_partials/commitment.html.twig' %}
+    {% if page.codeBlock is not null %}
+        {{ page.codeBlock | raw }}
+    {% endif %}
+{% endblock %}

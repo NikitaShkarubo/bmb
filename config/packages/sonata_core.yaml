@@ -1,0 +1,8 @@
+sonata_core:
+    flashmessage:
+        success:
+            types:
+                - { type: my_list_success, domain: Admin }
+    form:
+        mapping:
+            enabled: false

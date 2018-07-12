@@ -1,0 +1,24 @@
+admin:
+    resource: '@SonataAdminBundle/Resources/config/routing/sonata_admin.xml'
+    prefix: /admin
+
+_sonata_admin:
+    resource: .
+    type: sonata_admin
+    prefix: /admin
+
+elfinder:
+     resource: "@FMElfinderBundle/Resources/config/routing.yml"
+     prefix: '/admin/file-manager'
+
+controllers:
+    resource: ../src/Controller/
+    type: annotation
+
+cms_page:
+    path: /{slug}
+    requirements:
+        slug: "[a-zA-Z0-9_-]+"
+    defaults:
+        _controller: 'App\Controller\PageController:indexAction'
+        slug: ''

@@ -1,0 +1,25 @@
+.right-side{
+    float: right;
+    width: 315px;
+    margin-left: 140px;
+
+    + .center{
+        overflow: hidden;
+    }
+
+    @media (max-width: 1180px) {
+        margin-left: 50px;
+    }
+
+    @media (max-width: 880px) {
+        float: none;
+        width: auto;
+        margin: 0;
+        order: 2;
+
+        + .center{
+            overflow: visible;
+            margin-left: 0;
+        }
+    }
+}

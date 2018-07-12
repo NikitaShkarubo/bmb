@@ -1,0 +1,40 @@
+sonata_admin:
+    show_mosaic_button: false
+    title:      'Administration'
+    templates:
+        layout:  '@App/layout.admin.html.twig'
+    dashboard:
+            groups:
+                main_page_components:
+                    label:                ADMIN_LABEL.MAIN_PAGE_BLOCKS
+                    label_catalogue:      ~
+                    items:
+                        - route:        index_page_edit
+                          route_params: { id: 1 }
+                          label:        ADMIN_LABEL.MAIN_PAGE_CONTENT_AREA
+                        - route:        admin_app_experience_list
+                          label:        ADMIN_LABEL.EXPERIENCE
+                content:
+                    label:                ADMIN_LABEL.CONTENT
+                    label_catalogue:      ~
+                    items:
+                        - route:        menu_parent_list
+                          label:        ADMIN_LABEL.MENU
+                        - route:        page_list
+                          label:        ADMIN_LABEL.PAGES
+                        - route:        admin_app_team_list
+                          label:        ADMIN_LABEL.TEAM
+                        - route:        system_pages_list
+                          label:        ADMIN_LABEL.SYSTEM_PAGES
+                cooperation:
+                    label:                ADMIN_LABEL.COOPERATION
+                    label_catalogue:      ~
+                    items:
+                        - route:        admin_app_testimonials_list
+                          label:        ADMIN_LABEL.TESTIMONIALS
+                        - route:        admin_app_contact_list
+                          label:        ADMIN_LABEL.CONTACT
+                        - route:        system_pages_edit
+                          route_params: { id: 3 }
+                          label:        ADMIN_LABEL.THANK_YOU_PAGE
+

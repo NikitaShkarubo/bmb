@@ -1,0 +1,32 @@
+{% extends "@App/base.html.twig" %}
+
+{% block title %}
+    {{ page.htmlTitle|default(page.pageTitle|default('')) }}
+{% endblock %}
+
+{% set settings = getSettings() %}
+
+{% block stylesheets %}
+    <link href="{{- preload(asset('assets/vendor.css')) -}}" rel="stylesheet">
+    <link href="{{- preload(asset('assets/css/style.css')) -}}" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+    <div class="wrapper">
+        {% include '@App/_partials/header.html.twig' %}
+        {% block content %} {% endblock %}
+    </div>
+
+    {% include '@App/_partials/footer.html.twig' %}
+
+    {% block javascipts %}
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAzLYWPc-iUUbbNR6Ya6zWlioauyrYm1UE"></script>
+        <script src="{{- preload(asset('assets/manifest.js')) -}}"></script>
+        <script src="{{- preload(asset('assets/vendor.js')) -}}"></script>
+        <script src="{{- preload(asset('assets/js/frontend.js')) -}}"></script>
+    {% endblock %}
+
+    {% if settings.codeBlock is not null %}
+        {{ settings.codeBlock | raw }}
+    {% endif %}
+{% endblock %}

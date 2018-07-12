@@ -1,0 +1,21 @@
+{% set settings = getSettings() %}
+    {% if settings.introImage == null %}
+        {% set image = 'default.jpg' %}
+    {% else %}
+        {% set image = settings.introImage %}
+    {% endif %}
+<section class="main-intro" style="background-image: url('{{ path('image', {'type': "intro", 'size': '1920x610', 'rf': 'fix', 'item': image}) }}')">
+    <div class="centered">
+        <div class="intro">
+            <ul class="activities-list clearfix">
+                <li>{{ settings.introTitle }}</li>
+            </ul>
+            <div class="text">
+                {{ settings.introText | raw }}
+            </div>
+            {% if settings.introLink is not null %}
+                <a class="more-btn" href="{{ settings.introLink }}">READ MORE</a>
+            {% endif %}
+        </div>
+    </div>
+</section>

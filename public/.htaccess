@@ -1,0 +1,61 @@
+Redirect 301 /our-firm https://bazarmcbean.com/our-team
+Redirect 301 /our-team/our-team https://bazarmcbean.com/our-team
+Redirect 301 /accounting https://bazarmcbean.com/accounting-overview
+Redirect 301 /blog https://bazarmcbean.com
+Redirect 301 /services/accounting https://bazarmcbean.com/us-and-cross-border-corporate-tax-services-overview
+Redirect 301 /services https://bazarmcbean.com/accounting-overview
+
+DirectoryIndex index.php
+
+php_flag allow_url_fopen 1
+
+AddType application/x-httpd-php71 .php
+Action application/x-httpd-php71 /cgi-bin/php71.cgi
+
+<IfModule mod_negotiation.c>
+    Options -MultiViews
+</IfModule>
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    RewriteCond %{HTTP_HOST} !^bazarmcbean\.com|^bazar\.geminiproductions\.com [NC]
+    RewriteRule ^(.*)$ https://bazarmcbean.com/$1 [R=301,QSA,L]
+
+    RewriteCond %{HTTPS} off
+    RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+    RewriteCond %{REQUEST_URI}::$1 ^(/.+)/(.*)::\2$
+    RewriteRule ^(.*) - [E=BASE:%1]
+
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule ^ - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+    RewriteCond %{ENV:REDIRECT_STATUS} ^$
+    RewriteRule ^index\.php(?:/(.*)|$) %{ENV:BASE}/$1 [R=301,L]
+
+    RewriteCond %{REQUEST_FILENAME} -f
+    RewriteRule ^ - [L]
+
+    RewriteRule ^ %{ENV:BASE}/index.php [L]
+</IfModule>
+
+<IfModule !mod_rewrite.c>
+    <IfModule mod_alias.c>
+        RedirectMatch 307 ^/$ /index.php/
+    </IfModule>
+</IfModule>
+
+ExpiresActive On
+ExpiresDefault "access plus 1 month"
+#ExpiresByType text/html "access plus 24 hours"
+ExpiresByType text/javascript "access plus 1 month"
+ExpiresByType application/javascript "access plus 1 month"
+ExpiresByType application/x-javascript "access plus 1 month"
+ExpiresByType text/css "access plus 1 month"
+ExpiresByType image/* "access plus 1 month"
+
+FileETag INode MTime Size
+
+#SetOutputFilter DEFLATE
+AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript  application/x-javascript

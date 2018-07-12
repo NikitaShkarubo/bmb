@@ -1,0 +1,62 @@
+ivory_ck_editor:
+    configs:
+        my_config:
+            language: '%locale%'
+            toolbar: toolbarPage
+            uiColor: "#ffffff"
+            height: 400px
+            forcePasteAsPlainText: true
+            filebrowserBrowseRoute:     "elfinder"
+            filebrowserBrowseRouteType: 0
+            contentsCss: '/assets/css/editor.css'
+            extraPlugins: "simplebox"
+        testimonials:
+            language: '%locale%'
+            toolbar: toolbarTestimonials
+            uiColor: "#ffffff"
+            height: 250px
+            forcePasteAsPlainText: true
+    plugins:
+        notification:
+            path:     "/ckeditor/plugins/notification/"
+            filename: "plugin.js"
+        clipboard:
+            path:     "/ckeditor/plugins/clipboard/"
+            filename: "plugin.js"
+        lineutils:
+            path:     "/ckeditor/plugins/lineutils/"
+            filename: "plugin.js"
+        widget:
+            path:     "/ckeditor/plugins/widget/"
+            filename: "plugin.js"
+        dialogui:
+            path:     "/ckeditor/plugins/dialogui/"
+            filename: "plugin.js"
+        dialog:
+            path:     "/ckeditor/plugins/dialog/"
+            filename: "plugin.js"
+        placeholder:
+            path:     "/ckeditor/plugins/placeholder/"
+            filename: "plugin.js"
+        simplebox:
+            path:     "/ckeditor/plugins/simplebox/"
+            filename: "plugin.js"
+    toolbars:
+        configs:
+            toolbarPage: [ "@line1", "/", "@line2" ]
+            toolbarTestimonials: [ "@line3" ]
+        items:
+            line1: ['simplebox', 'Templates', '-', 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord' , '-', 'Undo', 'Redo', '-', 'Find', 'Replace', '-', 'Link', 'Unlink', 'Anchor', '-', 'Image', 'Table', 'HorizontalRule', 'SpecialChar', '-', 'PageBreak', 'CreateDiv', 'ShowBlocks', '-', 'Maximize', '-', 'Source' ]
+            line2: ['Format','Font', 'FontSize', '-', 'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', 'Blockquote',  '-', '-', 'TextColor', 'BGColor',  '-', 'RemoveFormat']
+            line3: ['Source', '-', 'Templates', '-', 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', 'Blockquote',  '-', '-', 'RemoveFormat']
+
+            document: [ 'Source','-','Templates' ]
+            editing: [ 'Find','Replace','-','SelectAll','-','SpellChecker']
+            forms: [ 'Form', 'Checkbox', 'Radio', 'TextField', 'Textarea', 'Select', 'Button', 'ImageButton', 'HiddenField' ]
+            basicstyles: [ 'Bold','Italic','Underline','Strike','Subscript','Superscript','-','RemoveFormat' ]
+            paragraph: [ 'NumberedList','BulletedList','-','Outdent','Indent','-','Blockquote','CreateDiv', '-','JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock','-','BidiLtr','BidiRtl' ]
+            links: [ 'Link', 'Unlink', 'Anchor' ]
+            insert: [ 'Image','Table','HorizontalRule','SpecialChar','PageBreak' ]
+            styles: [ 'Format','Font','FontSize' ]
+            colors: [ 'TextColor','BGColor' ]
+            tools: [ 'Maximize', 'ShowBlocks','-','About' ]

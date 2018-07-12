@@ -1,0 +1,77 @@
+{% set settings = getSettings() %}
+{% set menu = getMenu() %}
+<header class="header">
+    <div class="header-top">
+        <div class="centered clearfix">
+            <div class="row">
+                <div class="large-4 columns">
+                    <div class="header-text">
+                        {{ settings.headerText | nl2br }}
+                    </div>
+                </div>
+                <div class="large-4 columns text-center">
+                    <a class="logo" href="{{ path('homepage') }}">Bazar McBean</a>
+                </div>
+                <div class="large-4 columns text-right">
+                    <a class="phone" href="tel:{{ settings.phone }}">
+                        <i class="phone-icon"></i>{{ settings.phone }}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="header-bottom">
+        <div class="centered clearfix"><a class="menu-toggle main-menu-toggle" href="javascript:void(0);"><span
+                        class="toggle"></span>Menu</a>
+            <ul class="menu-list clearfix">
+                <li><a href="{{ path('homepage') }}">Home</a></li>
+                {% for item in menu %}
+                    <li {% if item.activeChildrenMenu is not empty %} class="has-menu" {% endif %}>
+                        <a {% if item.linkTarget %} target="{{ item.linkTarget }}" {% endif %}
+                                href="{% if item.linkType == "link" and item.link is not null %}
+                                           {{ item.link }}
+                                      {% elseif item.linkType == "page" and item.page is not null %}
+                                            {{ path('cms_page', {slug: item.page.slug}) }}
+                                      {% elseif item.link is not null %}
+                                            {{ item.link }}
+                                      {% else %} javascript:void(0); {% endif %}">{{ item.title }}</a>
+                        {% if item.activeChildrenMenu is not empty %}<span class="sub-menu-toggle"></span>{% endif %}
+                        {% if item.activeChildrenMenu is not empty %}
+                            <ul class="sub-menu">
+                                {% for sub in item.activeChildrenMenu %}
+                                    <li {% if sub.activeChildrenMenu is not empty %} class="has-menu" {% endif %}>
+                                        <a {% if sub.linkTarget %} target="{{ sub.linkTarget }}" {% endif %}
+                                                href="{% if sub.linkType == "link" and sub.link is not null %}
+                                                    {{ sub.link }}
+                                                {% elseif sub.linkType == "page" and sub.page is not null %}
+                                                      {{ path('cms_page', {slug: sub.page.slug}) }}
+                                                {% elseif sub.link is not null %}
+                                                      {{ sub.link }}
+                                                {% else %} javascript:void(0); {% endif %}">{{ sub.title }}</a>
+                                        {% if sub.activeChildrenMenu is not empty %}<span
+                                                class="sub-menu-toggle"></span>
+                                            <ul class="sub-menu">
+                                                {% for third in sub.activeChildrenMenu %}
+                                                    <li>
+                                                        <a {% if third.linkTarget %} target="{{ third.linkTarget }}" {% endif %}
+                                                                href="{% if third.linkType == "link" and third.link is not null %}
+                                                                      {{ third.link }}
+                                                                {% elseif third.linkType == "page" and third.page is not null %}
+                                                                    {{ path('cms_page', {slug: third.page.slug}) }}
+                                                                {% elseif third.link is not null %}
+                                                                    {{ third.link }}
+                                                                {% else %} javascript:void(0); {% endif %}">{{ third.title }}</a>
+                                                    </li>
+                                                {% endfor %}
+                                            </ul>
+                                        {% endif %}
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</header>

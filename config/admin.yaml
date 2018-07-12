@@ -1,0 +1,92 @@
+services:
+    _defaults:
+        public: true
+
+    # HOMEPAGE
+
+    admin.index_page:
+        class: App\Admin\IndexPageAdmin
+        arguments: [~, App\Entity\Settings, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: ADMIN_GROUP.HOMEPAGE, label: ADMIN_LABEL.INDEX_PAGE, show_in_dashboard: false }
+
+    admin.experience:
+        class: App\Admin\ExperienceAdmin
+        arguments: [~, App\Entity\Experience, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: ADMIN_LABEL.EXPERIENCE, label: ADMIN_LABEL.EXPERIENCE }
+
+    # CONTENT
+
+    admin.page:
+        class: App\Admin\PageAdmin
+        arguments: [~, App\Entity\Page, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: ADMIN_LABEL.PAGES, label: ADMIN_LABEL.PAGES }
+
+    admin.system_pages:
+        class: App\Admin\SystemPagesAdmin
+        arguments: [~, App\Entity\Page, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: ADMIN_LABEL.SYSTEM_PAGES, label: ADMIN_LABEL.SYSTEM_PAGES }
+
+    admin.menu:
+        class: App\Admin\MenuAdmin
+        arguments: [~, App\Entity\Menu, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: ADMIN_LABEL.MENU, label: ADMIN_LABEL.MENU }
+        calls:
+            - [addChild, ['@admin.menu_children']]
+
+    admin.menu_children:
+        class: App\Admin\MenuChildrenAdmin
+        arguments: [~, App\Entity\Menu, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: ADMIN_GROUP.CONTENT, label: ADMIN_LABEL.MENU_CHILD, show_in_dashboard: false }
+
+    admin.team:
+        class: App\Admin\TeamAdmin
+        arguments: [~, App\Entity\Team, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: ADMIN_LABEL.TEAM, label: ADMIN_LABEL.TEAM }
+        calls:
+            - [addChild, ['@admin.team_members']]
+
+    admin.team_members:
+        class: App\Admin\TeamMembersAdmin
+        arguments: [~, App\Entity\TeamMember, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: ADMIN_GROUP.CONTENT, label: ADMIN_LABEL.MEMBER, show_in_dashboard: false }
+
+    # COOPERATION
+
+    admin.contact:
+        class: App\Admin\ContactAdmin
+        arguments: [~, App\Entity\Contact, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: ADMIN_LABEL.CONTACT, label: ADMIN_LABEL.CONTACT }
+
+    admin.testimonials:
+        class: App\Admin\TestimonialsAdmin
+        arguments: [~, App\Entity\Testimonials, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: ADMIN_LABEL.TESTIMONIALS, label: ADMIN_LABEL.TESTIMONIALS }
+
+    # SETTINGS
+
+    admin.settings:
+        class: App\Admin\SettingsAdmin
+        arguments: [~, App\Entity\Settings, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: settings, label: ADMIN_LABEL.SETTINGS, show_in_dashboard: false }
+
+    # USERS
+
+    admin.users:
+        class: App\Admin\UsersAdmin
+        arguments: [ ~, App\Entity\User, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: ADMIN_LABEL.USERS, label: ADMIN_LABEL.USERS }
+        calls:
+            - [setUserManager, ['@App\Manager\UserManager']]
+

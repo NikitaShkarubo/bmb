@@ -1,0 +1,91 @@
+//*font face*//
+@function str-replace($string, $search, $replace: "") {
+    $index: str-index($string, $search);
+
+    @if $index {
+        @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+    }
+
+    @return $string;
+}
+
+@mixin font-face($name, $path, $weight: null, $style: null, $exts: eot woff ttf svg) {
+    $src: null;
+
+    $extmods: (
+            eot: "?",
+            svg: "#" + str-replace($name, " ", "_")
+    );
+
+    $formats: (
+            otf: "opentype",
+            ttf: "truetype"
+    );
+
+    @each $ext in $exts {
+        $extmod: if(map-has-key($extmods, $ext), $ext + map-get($extmods, $ext), $ext);
+        $format: if(map-has-key($formats, $ext), map-get($formats, $ext), $ext);
+        $src: append($src, url(quote($path + "." + $extmod)) format(quote($format)), comma);
+    }
+
+    @font-face {
+        font-family: quote($name);
+        font-style: $style;
+        font-weight: $weight;
+        src: $src;
+    }
+}
+
+//*Font normalize*//
+@mixin normal-font($font-size, $line-height) {
+    font-size: $font-size;
+    line-height: $line-height;
+}
+
+//*Sticky footer*//
+@mixin sticky-footer($footer-height, $root-selector: unquote(".wrapper"), $root-footer-selector: unquote(".h-height"), $footer-selector: unquote(".footer")) {
+    html, body {
+        height: 100%;
+    }
+    #{$root-selector} {
+        min-height: 100%;
+        #{$root-footer-selector} {
+            height: $footer-height;
+        }
+    }
+    #{$footer-selector} {
+        margin-top: -$footer-height;
+        height: $footer-height;
+    }
+}
+
+//*Icon normalize*//
+@mixin get-icon($icon-name) {
+    @include icons-sprite($icon-name);
+    @include sprite-dimensions($custom-icons, $icon-name);
+    @include inline-block(middle);
+}
+
+//*retina images*//
+@mixin image-2x($image, $width, $height, $align: unquote("top")) {
+    @include inline-block($align);
+    background: url($image) no-repeat;
+    @include background-size($width $height);
+    width: $width;
+    height: $height;
+}
+
+//*placeholder*//
+@mixin placeholder {
+    &::-webkit-input-placeholder {@content}
+    &:-moz-placeholder           {@content}
+    &::-moz-placeholder          {@content}
+    &:-ms-input-placeholder      {@content}
+}
+
+//*calc*//
+@mixin calc($property, $expression) {
+    #{$property}: -moz-calc(#{$expression});
+    #{$property}: -webkit-calc(#{$expression});
+    #{$property}: calc(#{$expression});
+}

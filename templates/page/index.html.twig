@@ -1,0 +1,40 @@
+{% extends "@App/layout.html.twig" %}
+
+{% block content %}
+    {% if page.image == null %}
+        {% set image = 'default.jpg' %}
+    {% else %}
+        {% set image = page.image %}
+    {% endif %}
+    {% if page.imageHeaderActive %}
+        <div class="page-title"
+             style="background-image: url({{ path('image', {'type': "page", 'size': '1366x240', 'rf': 'fix', 'item': image}) }})">
+            <div class="centered">
+                <h1 class="title">{{ page.imageHeaderTitle }}</h1>
+            </div>
+        </div>
+    {% endif %}
+    <div class="content">
+        <div class="centered clearfix">
+            {% if page.contactFormActive == true %}
+                {{ render(controller('App\\Controller\\ContactController::contactAction', { 'type': 'aside' })) }}
+            {% endif %}
+            <div class="center">
+                <h1>{{ page.pageTitle }}</h1>
+                {{ content | raw }}
+            </div>
+        </div>
+    </div>
+    {% if page.testimonialsActive == true %}
+        {% include '@App/_partials/testimonials.html.twig' %}
+    {% endif %}
+
+    {% if page.codeBlock is not null %}
+        {{ page.codeBlock | raw }}
+    {% endif %}
+
+{% endblock %}
+
+
+
+

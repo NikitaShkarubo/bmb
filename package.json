@@ -1,0 +1,25 @@
+{
+  "devDependencies": {
+    "@fancyapps/fancybox": "^3.2.5",
+    "@symfony/webpack-encore": "^0.16"
+  },
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "dev-server": "./node_modules/.bin/encore dev-server",
+    "dev": "./node_modules/.bin/encore dev",
+    "watch": "./node_modules/.bin/encore dev --watch",
+    "build": "./node_modules/.bin/encore production"
+  },
+  "dependencies": {
+    "copy-webpack-plugin": "^4.1",
+    "fancybox": "^3.0.0",
+    "imagemin-webpack-plugin": "^1.5",
+    "jquery": "^3.2",
+    "node-sass": "^4.5",
+    "paroller.js": "^1.2.0",
+    "sass-loader": "^6.0",
+    "slick-carousel": "^1.8.1",
+    "venobox": "^1.8.2"
+  }
+}

@@ -1,0 +1,12 @@
+{% extends '@App/layout.html.twig' %}
+
+{% block content %}
+    <div class="content">
+        <div class="centered clearfix">
+            <div class="center">
+                <h1>The server returned a "{{ status_code }} {{ status_text }}".</h1>
+                <p>Administration is notified about this incident.</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

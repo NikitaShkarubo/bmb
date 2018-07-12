@@ -1,0 +1,105 @@
+{% extends "@App/layout.html.twig" %}
+
+{% block content %}
+    {% if page.imageHeaderActive == true %}
+        <div class="page-title"
+             style="background-image: url({{ path('image', {'type': "page", 'size': '1366x240', 'rf': 'fix', 'item': page.image}) }})">
+            <div class="centered">
+                <h1 class="title">{{ page.imageHeaderTitle }}</h1>
+            </div>
+        </div>
+    {% endif %}
+    <div class="content">
+        <div class="centered clearfix">
+            <div class="center">
+                {{ page.content | raw }}
+                {% for team in teams %}
+                    <div class="page-desc">
+                        {% if loop.first %}
+                            <div class="title">{{ team.title }}</div>
+                        {% else %}
+                            <div class="custom-title">{{ team.title }}</div>
+                        {% endif %}
+                        <p>
+                            {{ team.description | nl2br }}
+                        </p>
+                    </div>
+                    <ul class="team-list {% if team.inRow == 2 %} two-items {% endif %} clearfix">
+                        {% for item in team.member %}
+                            {% if item.image == null %}
+                                {% set image = 'default.jpg' %}
+                            {% else %}
+                                {% set image = item.image %}
+                            {% endif %}
+                            <li>
+                                <div class="personal-img"><img
+                                            src="{{ path('image', {'type': "team", 'size': '200x250', 'rf': 'fix', 'item': image}) }}">
+                                    <a class=" details-btn venobox" href="#personal-info-{{ item.id }}"
+                                       data-vbtype="inline"><i class="plus-icon"></i></a>
+                                </div>
+                                <div class="personal-info">
+                                    <div class="name">{{ item.name }}</div>
+                                    <div class="position">{{ item.shortDescription }}</div>
+                                    <table class="contacts">
+                                        <tbody>
+                                        <tr>
+                                            <td>Email:</td>
+                                            <td><a href="mailto:{{ item.email }}">{{ item.email }}</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tel:</td>
+                                            <td>
+                                                <a href="tel:{{ item.phone }}">{{ item.phone }}</a>ext. {{ item.extension }}
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </li>
+                            <div id="personal-info-{{ item.id }}" style="display: none;">
+                                <a class="vbox-close-btn" href="javascript:void(0);" title="Close"><i
+                                            class="close-icon"></i></a>
+                                <div class="vbox-body">
+                                    <div class="info-block clearfix">
+                                        <div class="personal-img">
+                                            {% if item.image == null %}
+                                                {% set image = 'default.jpg' %}
+                                            {% else %}
+                                                {% set image = item.image %}
+                                            {% endif %}
+                                            <img src="{{ path('image', {'type': "team", 'size': '200x250', 'rf': 'fix', 'item': image}) }}">
+                                        </div>
+                                        <div class="personal-info">
+                                            <div class="name">{{ item.name }}</div>
+                                            <div class="position">{{ item.shortDescription }}</div>
+                                            <table class="contacts">
+                                                <tbody>
+                                                <tr>
+                                                    <td>Email:</td>
+                                                    <td><a href="mailto:{{ item.email }}">{{ item.email }}</a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Tel:</td>
+                                                    <td>
+                                                        <a href="tel:{{ item.phone }}">{{ item.phone }}</a>ext. {{ item.extension }}
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                            {{ item.description | raw }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </ul>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    {% if page.testimonialsActive == true %}
+        {% include '@App/_partials/testimonials.html.twig' %}
+    {% endif %}
+
+{% endblock %}

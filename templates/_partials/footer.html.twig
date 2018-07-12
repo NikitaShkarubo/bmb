@@ -1,0 +1,56 @@
+{% set settings = getSettings() %}
+<footer class="footer">
+    <div class="footer-top">
+        <div class="centered">
+            <div class="row">
+                <div class="large-6 columns">
+                    <div class="row">
+                        <div class="large-6 columns">
+                            <p>Bazar McBean LLP</p>
+                            <ul>
+                                {{ settings.address | nl2br }}
+                            </ul>
+                            <table>
+                                <tr>
+                                    <td>Call Now:</td>
+                                    <td><a href="tel:{{ settings.phone }}">{{ settings.phone }}</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Toll Free Fax:</td>
+                                    <td><a href="tel:{{ settings.tollFax }}">{{ settings.tollFax }}</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Local Fax:</td>
+                                    <td><a href="tel:{{ settings.fax }}">{{ settings.fax }}</a></td>
+                                </tr>
+                            </table>
+                            <table>
+                                <tr>
+                                    <td>Skype:</td>
+                                    <td><a href="skype:{{ settings.skype }}?chat">{{ settings.skype }}</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Email:</td>
+                                    <td><a href="mailto:{{ settings.email }}">{{ settings.email }}</a></td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="large-6 columns">
+                            {{ settings.footerText | nl2br }}
+                        </div>
+                    </div>
+                </div>
+                <div class="large-6 columns">
+                    <div id="map" data-lat="{{ settings.mapLatitude }}" data-long="{{ settings.mapLongitude }}"
+                         data-link="{{ settings.mapLink }}"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="centered clearfix">
+            <div class="copyright fl-left">&copy; {{ "now"|date("Y") }} Bazar McBean LLP. All Rights Reserved.</div>
+            <div class="made-by fl-right"><a href="http://www.geminiproductions.com" target="_blank">Website Design by Gemini Productions</a></div>
+        </div>
+    </div>
+</footer>

@@ -1,0 +1,78 @@
+@include font-face('PTSerif-Regular', '../fonts/PTSerif-Regular');
+@include font-face('PTSerif-Bold', '../fonts/PTSerif-Bold');
+@include font-face('Montserrat-Bold', '../fonts/Montserrat-Bold');
+@include font-face('Montserrat-Italic', '../fonts/Montserrat-Italic');
+@include font-face('Montserrat-Regular', '../fonts/Montserrat-Regular');
+@include font-face('Montserrat-Light', '../fonts/Montserrat-Light');
+@include font-face('Montserrat-Black', '../fonts/Montserrat-Black');
+@include font-face('Montserrat-SemiBold', '../fonts/Montserrat-SemiBold');
+@include font-face('Montserrat-MediumItalic', '../fonts/Montserrat-MediumItalic');
+
+//*-------------custom fonts-----------*/
+$fontPTSerifRegular: "PTSerif-Regular", sans-serif;
+$fontPTSerifBold: "PTSerif-Bold", sans-serif;
+$fontMontserratBold: "Montserrat-Bold", sans-serif;
+$fontMontserratItalic: "Montserrat-Italic", sans-serif;
+$fontMontserratRegular: "Montserrat-Regular", sans-serif;
+$fontMontserratLight: "Montserrat-Light", sans-serif;
+$fontMontserratBlack: "Montserrat-Black", sans-serif;
+$fontMontserratSemiBold: "Montserrat-SemiBold", sans-serif;
+$fontMontserratMediumItalic: "Montserrat-MediumItalic", sans-serif;
+
+//*-------------base variables------------*/
+$mainFontColor: #222424;
+$bodyHeight: 100%;
+$mainBg: #2B2D42;
+$titleColor: #063C71;
+$buttonColor: #D64141;
+$linkColor: $buttonColor;
+$placeholderColor: #6e6e6e;
+$breadcrumbsColor: $placeholderColor;
+$elementMargin: 0 0 15px 0;
+$alertColor: #F20A3F;
+$primaryColor: #74A3C7;
+$secondaryColor: #3F4883;
+$successColor: #12C4A0;
+$warningColor: #edb225;
+$footerHeight: 205px;
+$iconColor: #8BA2B3;
+$borderRadius: 4px;
+$borderColor: #D9D9D9;
+
+//*grid*//
+$columnPadding: 25px;
+$columnsNumber: 12;
+
+//*-------------base font variables------------*/
+$baseFontSize: 14px;
+$baseLineHeight: 21px;
+
+//*------------headers sizes------------------*/
+$h1FontSize: 31px;
+$h2FontSize: 29px;
+$h3FontSize: 24px;
+$h4FontSize: 18px;
+$h5FontSize: 16px;
+$h6FontSize: 14px;
+
+$headingMargin: 0 0 25px 0;
+$headingColor: $mainFontColor;
+
+//*----------list styles---------------------*/
+$listMargin: 0 0 20px 0;
+$listPadding: 0 0 0 18px;
+$listUnordered: disc;
+$listOrdered: decimal;
+$listElemPadding: 2px;
+$listElemMargin: 5px 0 0;
+$listItemFontSize: 16px;
+$listItemLineHeight: 22px;
+$listItemMargin: 0 0 5px 0;
+
+//*----------paragraph styles----------------*/
+$paragraphFontSize: 16px;
+$paragraphLineHeight: 26px;
+$paragraphMargin: 0 0 20px 0;
+$paragraphPadding: 0;
+$paragraphColor: $mainFontColor;
+$textIndent: 25px;

@@ -1,0 +1,67 @@
+@import './mixins/customMixins';
+@import './mixins/helperMixins';
+@import './base/variables';
+@import './base/typography';
+
+body{
+    font-family: $fontMontserratRegular;
+}
+
+.list-reset{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+ul, ol {
+    margin: $listMargin;
+    padding: $listPadding;
+
+    li {
+        @include normal-font($listItemFontSize, $listItemLineHeight);
+        margin: $listItemMargin;
+
+        ul, ol{
+            margin-top: 10px;
+        }
+
+        p{
+            margin: 0;
+        }
+
+        + li{
+            margin-top: 12px;
+        }
+    }
+
+    &.unstyled {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+
+        li {
+            margin: 0;
+            padding: 0;
+        }
+    }
+
+    &.inline {
+        margin: 0;
+        padding-left: 0;
+
+        li {
+            .button {
+                margin: 0;
+            }
+        }
+    }
+}
+
+iframe {
+    max-width: 100%;
+}
+
+img{
+    vertical-align: top;
+    max-width: 100%;
+}

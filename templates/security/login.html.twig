@@ -1,0 +1,31 @@
+{% extends "@App/base.html.twig" %}
+
+{% block title %}
+    {{ page.htmlTitle|default(page.pageTitle|default('')) }}
+{% endblock %}
+
+{% block stylesheets %}
+    <link href="{{- preload(asset('assets/css/admin.css')) -}}" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+    <div class="widget">
+        <div class="widget-header">
+            <div class="logo"></div>
+        </div>
+        <div class="widget-body">
+            <div class="title">Login</div>
+            {% if error %}
+                <div class="alert">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
+            <form action="{{ path('login') }}" method="post">
+                <input type="text" id="username" name="_username" placeholder="Username" value="{{ last_username }}"
+                       autofocus>
+                <input type="password" id="password" name="_password" placeholder="Password">
+                <div class="text-right">
+                    <button type="submit">Login</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

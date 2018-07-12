@@ -1,0 +1,16 @@
+{% if subject is not null %}
+{{ subject|raw }}
+{% endif %}
+
+{% if contact.name is not null %}
+    Name: {{ contact.name|raw }}
+{% endif %}
+{% if contact.email is not null %}
+    Email: {{ contact.email|raw }}
+{% endif %}
+{% if contact.phone is not null %}
+    Phone: {{ contact.phone | phone_number_format('INTERNATIONAL') }}
+{% endif %}
+{% if contact.comment is not null %}
+    Comment: {{ contact.comment|raw }}
+{% endif %}

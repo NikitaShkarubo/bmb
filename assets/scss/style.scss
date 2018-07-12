@@ -1,0 +1,23 @@
+// *** Mixins *** //
+@import './mixins/customMixins';
+@import './mixins/helperMixins';
+
+// *** Base *** //
+@import './base/normalize';
+@import './base/variables';
+@import './base/core';
+@import './base/typography';
+@import './base/elements';
+
+// *** Components *** //
+@import './components/icons';
+@import './components/sliders';
+@import './components/wrapper';
+@import './components/header';
+@import './components/rightSide';
+@import './components/center';
+@import './components/footer';
+
+@import "../../node_modules/slick-carousel/slick/slick";
+
+//@include sticky-footer($footerHeight, ".wrapper", ".h-footer", ".footer");

@@ -1,0 +1,5 @@
+CONTACT:
+    NAME_NOT_VALID: 'Set correct name'
+    PHONE_NOT_VALID: 'This value is not a valid phone number'
+
+RECAPTCHA.ERROR_MESSAGE: 'Please Confirm Your a Human'

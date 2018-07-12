@@ -1,0 +1,13 @@
+{% set settings = getSettings() %}
+<section class="commitment">
+    <div class="centered">
+        {% if settings.commitmentTitle is not null %}
+        <div class="commitment-title">{{ settings.commitmentTitle }}</div>
+        {% endif %}
+        {% if settings.commitmentText %}
+        <div class="commitment-text">
+          {{ settings.commitmentText | raw}}
+        </div>
+        {% endif %}
+    </div>
+</section>

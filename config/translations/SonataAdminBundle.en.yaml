@@ -1,0 +1,22 @@
+ADMIN_LABEL:
+    CONTENT: 'Content'
+    COOPERATION: 'Contacts & Testimonials'
+    PAGES: 'Pages'
+    SYSTEM_PAGES: 'System pages'
+    MENU: 'Menu Navigation'
+    MENU_CHILD: 'Components of menu'
+
+    EXPERIENCE: 'Services Content Blocks'
+    MAIN_PAGE_BLOCKS: 'Home Page Content'
+    MAIN_PAGE_CONTENT_AREA: 'Home Page Content Area'
+
+    CONTACT: 'Contacts'
+    TESTIMONIALS: 'Testimonials'
+    THANK_YOU_PAGE: 'Form thank you page'
+
+    TEAM: 'Staff Content'
+    MEMBER: 'Member'
+
+    SETTINGS: 'Global Settings'
+
+    USERS: 'Users'

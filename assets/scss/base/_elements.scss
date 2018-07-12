@@ -1,0 +1,311 @@
+.button{
+    display: inline-block;
+    outline: none;
+    cursor: pointer;
+    border: none;
+    height: 50px;
+    padding: 0 20px;
+    color: #fff;
+    text-align: center;
+    border-radius: $borderRadius;
+    text-transform: uppercase;
+    background: $linkColor;
+    @include normal-font(16px, 50px);
+    font-family: $fontMontserratSemiBold;
+    @include transition(background 0.2s ease-in-out, color 0.2s ease-in-out);
+
+    &.wide{
+        display: block;
+        width: 100%;
+    }
+
+    &:hover{
+        text-decoration: none;
+        background: darken($linkColor, 5%);
+    }
+}
+
+//*grid*//
+.row {
+    margin-left: -$columnPadding;
+    margin-right: -$columnPadding;
+    @extend .clearfix;
+
+    .columns {
+        float: left;
+        padding-left: $columnPadding;
+        padding-right: $columnPadding;
+
+        &.end{
+            float: right;
+        }
+    }
+
+    &.collapse {
+        margin: 0;
+
+        .columns {
+            padding: 0;
+        }
+    }
+
+    @mixin columnWith($columns:unquote($columnsNumber)) {
+        $singleWidth: 100% / $columnsNumber;
+        width: $singleWidth * $columns;
+    }
+
+    @for $i from 1 through $columnsNumber {
+        .large-#{$i} {
+            @include columnWith($i);
+        }
+    }
+}
+
+//*modal*//
+.vbox-close{
+    height: 50px;
+    font-size: 35px;
+    display: none;
+}
+
+.vbox-close-btn{
+    color: #bbb;
+    position: absolute;
+    right: 30px;
+    top: 30px;
+    @include normal-font(32px, 32px);
+
+    i{
+        display: block;
+    }
+
+    &:hover{
+        text-decoration: none;
+    }
+}
+
+.vbox-content{
+    padding: 30px 25px;
+
+    @media (max-width: 660px) {
+        padding: 30px 10px;
+    }
+}
+
+.vbox-container{
+    .vbox-inline{
+        width: auto;
+        max-width: 800px;
+        height: auto;
+        overflow: visible;
+        position: relative;
+        padding: 30px;
+
+        .vbox-header{
+            @include normal-font(28px, 30px);
+            margin-bottom: 25px;
+        }
+
+        .vbox-body{
+            .info-block{
+                .personal-img{
+                    width: 200px;
+                    float: left;
+                    margin-right: 30px;
+                }
+
+                .personal-info{
+                    overflow: hidden;
+                    @include normal-font(16px, 18px);
+
+                    .name{
+                        margin-bottom: 10px;
+                        font-family: $fontMontserratSemiBold;
+                    }
+
+                    .position{
+                        margin-bottom: 33px;
+                    }
+
+                    .contacts{
+                        width: auto;
+                        margin-bottom: 25px;
+
+                        tr{
+                            td{
+                                padding-right: 10px;
+
+                                a{
+                                    margin-right: 5px;
+                                }
+                            }
+
+                            &:first-child{
+                                td{
+                                    width: 70px;
+                                }
+                            }
+
+                            + tr{
+                                td{
+                                    padding-top: 29px;
+                                }
+                            }
+                        }
+                    }
+
+                    .education{
+                        margin-bottom: 35px;
+
+                        .title{
+                            margin-bottom: 18px;
+                            @include normal-font(16px, 16px);
+                            font-family: $fontMontserratBold;
+                        }
+
+                        p{
+                            margin: 0;
+                            line-height: 18px;
+                        }
+                    }
+
+                    .membership{
+                        @extend .education;
+                        margin: 0;
+
+                        ul{
+                            @extend .list-reset;
+
+                            li{
+                                + li{
+                                    margin-top: 10px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @media (max-width: 660px) {
+        .vbox-inline{
+            padding: 15px;
+
+            .vbox-close-btn{
+                color: #fff;
+                right: 0;
+                top: -25px;
+                @include normal-font(20px, 20px);
+            }
+
+            .vbox-body{
+                .info-block{
+                    .personal-img{
+                        width: auto;
+                        float: none;
+                        text-align: center;
+                        margin-bottom: 20px;
+                    }
+
+                    .personal-info{
+                        overflow: visible;
+                        font-size: 14px;
+
+                        .position{
+                            margin-bottom: 10px;
+                        }
+
+                        .contacts{
+                            tr{
+                                + tr{
+                                    td{
+                                        padding-top: 10px;
+                                    }
+                                }
+                            }
+                        }
+
+                        .education{
+                            margin-bottom: 25px;
+
+                            .title{
+                                margin-bottom: 10px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+//*widget*//
+.widget{
+    padding: 50px;
+    background: #fff;
+    border-radius: 4px;
+    @include box-shadow(0 5px 30px rgba(0,0,0,0.15));
+
+    .widget-title{
+        color: $titleColor;
+        @include normal-font(40px, 40px);
+        font-family: $fontPTSerifRegular;
+        margin-bottom: 25px;
+    }
+
+    &.contact-widget{
+        background: #fff image-url("contact-img.png") right bottom no-repeat;
+        @include background-size(content);
+
+        .captcha{
+            transform: scale(0.90);
+            transform-origin: 0 0;
+        }
+
+        @media (max-width: 660px) {
+            .captcha{
+                transform: scale(0.82);
+                transform-origin: 0 0;
+            }
+        }
+    }
+
+    &.small{
+        padding: 20px;
+
+        .widget-title{
+            @include normal-font(24px, 24px);
+        }
+
+        .widget-body{
+            input,
+            .captcha{
+                margin-bottom: 25px;
+            }
+
+            .captcha{
+                margin-bottom: 15px;
+
+                @media (max-width: 660px) {
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+}
+
+//*alerts*//
+.alert{
+    color: #fff;
+    text-align: center;
+    padding: 7px 15px;
+    border-radius: 3px;
+    background: $alertColor;
+    @include normal-font(14px, 18px);
+    margin-bottom: 10px;
+
+    &.success{
+        background: $successColor;
+    }
+}
